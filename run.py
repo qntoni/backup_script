@@ -9,10 +9,12 @@ install_method = input("Is passbolt installed from source or package? (source/pa
 
 # Based on install_method, determine the passbolt config folder location
 if install_method.lower() == "source":
-    passbolt_location = "/var/www/passbolt/config"
+    passbolt_location = "/var/www/passbolt/"
+    passbolt_configuration = "/var/www/passbolt/config"
     passbolt_cake = "/var/www/passbolt/bin/cake"
 elif install_method.lower() == "package":
-    passbolt_location = "/etc/passbolt"
+    passbolt_location = "/usr/share/php/passbolt/"
+    passbolt_configuration = "/etc/passbolt"
     passbolt_cake = "/usr/share/php/passbolt/bin/cake"
 else:
     print("Invalid input. Exiting script.")
@@ -23,7 +25,7 @@ version = input("Are you using passbolt CE or PRO? (CE/PRO): ")
 
 # Determine if subscription key should be backed up
 if version.lower() == "pro":
-    subscription_key = f"{passbolt_location}/subscription_key.txt"
+    subscription_key = f"{passbolt_configuration}/subscription_key.txt"
 else if version.lower() === "ce":
     subscription_key = ""
 else: 
@@ -34,8 +36,8 @@ else:
 passbolt_version = input("What is your passbolt version? (e.g. 3.12.0 || 4.0.2)")
 
 # Determine if avatar should be backed up
-if float(passbolt_version) < 3.2.0 and subscription_key != "":
-    avatar = "/var/www/passbolt/webroot/img/avatar"
+if float(passbolt_version) < 3.2.0:
+    avatar = f"{passbolt_location}/webroot/img/avatar"
 else:
     avatar = ""
 
