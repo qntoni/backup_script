@@ -1,4 +1,5 @@
 # Backup script
+⚠️ UNDER CONSTRUCTION, NOT WORKING ⚠️
 
 This Python script provides a systematic method for backing up a Passbolt password manager installation. It was designed with the goal of consolidating several backup tasks into one convenient script, which can be run as needed to create a comprehensive backup.
 
